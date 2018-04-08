@@ -1,4 +1,5 @@
-window.addEventListener("keydown", function(e) {
+
+function playSoundOnKeyPress(e) {
   const audio = document.querySelector(`audio[data-key="${e.keyCode}"`);
   const item = document.querySelector(`.item[data-key="${e.keyCode}"]`);
   if (!audio) return; // stop the function from running all together
@@ -7,8 +8,10 @@ window.addEventListener("keydown", function(e) {
   item.classList.add("playing");
 
   const items = document.querySelectorAll(".item");
-  items.forEach(key => key.addEventListener("transitionend", removeTransition));
-});
+  items.forEach(item =>
+    item.addEventListener("transitionend", removeTransition)
+  );
+}
 
 function removeTransition(e) {
   if (e.propertyName !== "transform") return;
@@ -16,8 +19,4 @@ function removeTransition(e) {
   this.classList.remove("playing");
 }
 
-// code for allowing clicks
-// const items = document.querySelectorAll('.item');
-// items.forEach(item => item.addEventListener('click', function(e) {
-//     if (!audio) return
-// }))
+window.addEventListener("keydown", playSoundOnKeyPress);
