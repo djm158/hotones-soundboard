@@ -47,3 +47,7 @@ TODO:
 * backend api
 * sound sprites
 * keyboard input dialog for sound
+* add authentication
+* allow file uploads
+* allow users to save boards
+* allow customization the size of buttons

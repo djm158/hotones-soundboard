@@ -1,15 +1,21 @@
 import React from "react";
 import "./App.css";
 
-import { SoundButton } from "./components/SoundButton";
-import { Key } from "./components/SoundButton";
-const beep = require("./assets/sounds/brettbaker.mp3");
+// import { SoundButton } from "./components/SoundButton";
+// import { Key } from "./components/SoundButton";
+// import Modal from "react-modal";
+import UserProvider from "./auth/UserProvider";
+import Application from "./auth/Application";
+
+// const beep = require("./assets/sounds/brettbaker.mp3");
+// Modal.setAppElement("#modal-soundboard");
 
 function App() {
+
   return (
-    <div>
-      <SoundButton text="brett baker" keyCode={Key.Numpad5} sound={beep}></SoundButton>
-    </div>
+    <UserProvider>
+      <Application />
+    </UserProvider>
   );
 }
 

@@ -60,9 +60,9 @@ export const useKeyboardBindings = (map: MappedKey) => {
 const KeyCodeText = styled.p`
   margin: 0;
   padding: 0;
-
   margin-left: 8px;
 `;
+
 const KeyCodeBox = styled.div`
   justify-content: center;
   align-items: center;
