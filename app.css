@@ -1,7 +1,8 @@
-html, body {
+html,
+body {
   height: 100%;
-  background: #E1E2E1;
-  font-family: 'Open Sans', Arial, sans-serif;
+  background: #e1e2e1;
+  font-family: "Open Sans", Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -11,7 +12,7 @@ h1 {
 }
 
 .container {
-  width: 1200px;
+  max-width: 1200px;
   height: 100%;
   margin: 0 auto;
 }
@@ -31,11 +32,12 @@ h1 {
   margin: 5px 10px;
   height: 100%;
   border-radius: 10px;
-  background: #FAFAFA;
+  background: #fafafa;
+  max-width: 600px;
 }
 
 .item {
-  width: 60%;
+  width: 250px;
   height: 60px;
   border: 1px solid #222;
   display: flex;
@@ -49,7 +51,7 @@ h1 {
 }
 
 .item:hover {
-  background: #4FFB80;
+  background: #4ffb80;
 }
 
 .box {
@@ -61,7 +63,7 @@ h1 {
   padding: 5px;
   background: #fb4f4f;
   border-radius: 5px;
-  color: #FDFDFD
+  color: #fdfdfd;
 }
 
 .box-text {
@@ -74,12 +76,11 @@ h1 {
   box-shadow: 0 0 1rem #fb4f4f;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1024px) {
   .flex-grid {
     display: block;
   }
-
-  .container {
-    max-width: 100%;
+  .col {
+    margin: 2rem auto;
   }
 }
