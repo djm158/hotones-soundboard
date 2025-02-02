@@ -14,33 +14,50 @@
   </head>
 
   <body>
-    <h1 style="text-align: center">Hot Ones Sound Board</h1>
+    <h1 class="title">Hot Ones Sound Board</h1>
 
+    <h3 class="subtitle">
+      Right click on a key box to change the key binding!
+    </h3>
+    <!-- Key Binding Modal -->
+    <div class="key-binding-modal">
+      <h3 class="key-binding-modal-title">Configure Key Binding for:</h3>
+
+      <div>
+        <span>Current Key Binding:</span>
+        <span class="key-binding-modal-key"></span>
+      </div>
+      <input type="text" class="key-binding-modal-input" maxlength="1" />
+      <button onclick="app.saveKeyBinding()">Save</button>
+    </div>
+
+    <!-- Container for sound items -->
     <div class="container">
       <div class="flex-grid">
+        <!-- Sound items grouped by category -->
         <div class="col">
           <h2>Sean</h2>
-          <div class="item" data-key="F">
+          <div class="audio-keybinding-container" data-key="F">
             <div class="key-box">F</div>
             <div class="box-text">"Siracha, no big deal"</div>
           </div>
-          <div class="item" data-key="D">
+          <div class="audio-keybinding-container" data-key="D">
             <div class="key-box">D</div>
             <div class="box-text">"Deep dive on your instagram"</div>
           </div>
-          <div class="item" data-key="Z">
+          <div class="audio-keybinding-container" data-key="Z">
             <div class="key-box">Z</div>
             <div class="box-text">"Wow"</div>
           </div>
-          <div class="item" data-key="C">
+          <div class="audio-keybinding-container" data-key="C">
             <div class="key-box">C</div>
             <div class="box-text">"Perfectly geometric dolops"</div>
           </div>
-          <div class="item" data-key="T">
+          <div class="audio-keybinding-container" data-key="T">
             <div class="key-box">T</div>
             <div class="box-text">"It's tradition around here"</div>
           </div>
-          <div class="item" data-key="J">
+          <div class="audio-keybinding-container" data-key="J">
             <div class="key-box">J</div>
             <div class="box-text">"You don't have to"</div>
           </div>
@@ -48,19 +65,19 @@
 
         <div class="col">
           <h2>Matty</h2>
-          <div class="item" data-key="S">
+          <div class="audio-keybinding-container" data-key="S">
             <div class="key-box">S</div>
             <div class="box-text">"It was a sick pitch, dawg"</div>
           </div>
-          <div class="item" data-key="A">
+          <div class="audio-keybinding-container" data-key="A">
             <div class="key-box">A</div>
             <div class="box-text">"MATTY MATHESON"</div>
           </div>
-          <div class="item" data-key="W">
+          <div class="audio-keybinding-container" data-key="W">
             <div class="key-box">W</div>
             <div class="box-text">"World wide peace"</div>
           </div>
-          <div class="item" data-key="Q">
+          <div class="audio-keybinding-container" data-key="Q">
             <div class="key-box">Q</div>
             <div class="box-text">"Meow"</div>
           </div>
@@ -68,19 +85,19 @@
 
         <div class="col">
           <h2>Russell</h2>
-          <div class="item" data-key="R">
+          <div class="audio-keybinding-container" data-key="R">
             <div class="key-box">R</div>
             <div class="box-text">"That little bastard"</div>
           </div>
-          <div class="item" data-key="X">
+          <div class="audio-keybinding-container" data-key="X">
             <div class="key-box">X</div>
             <div class="box-text">"God I miss drugs"</div>
           </div>
-          <div class="item" data-key="V">
+          <div class="audio-keybinding-container" data-key="V">
             <div class="key-box">V</div>
             <div class="box-text">"I'm a volatile person"</div>
           </div>
-          <div class="item" data-key="B">
+          <div class="audio-keybinding-container" data-key="B">
             <div class="key-box">B</div>
             <div class="box-text">"Breeeett Baaaker"</div>
           </div>
@@ -88,6 +105,7 @@
       </div>
     </div>
 
+    <!-- Audio elements -->
     <audio data-key="F">
       <source src="sounds/sirachanobigdeal.ogg" type="audio/ogg" />
       <source src="sounds/sirachanobigdeal.mp3" type="audio/mp3" />

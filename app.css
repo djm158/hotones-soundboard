@@ -12,6 +12,11 @@ h1 {
   margin: 0.5rem;
 }
 
+.title,
+.subtitle {
+  text-align: center;
+}
+
 .container {
   max-width: 1200px;
   height: 100%;
@@ -36,7 +41,7 @@ h1 {
   max-width: 600px;
 }
 
-.item {
+.audio-keybinding-container {
   width: 250px;
   height: 60px;
   border: 1px solid #222;
@@ -50,7 +55,7 @@ h1 {
   font-weight: bold;
 }
 
-.item:hover {
+.audio-keybinding-container:hover {
   background: #4ffb80;
 }
 
@@ -86,4 +91,21 @@ h1 {
   .col {
     margin: 2rem auto;
   }
+}
+
+.key-binding-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: #fdfdfd;
+  padding: 2rem;
+  border-radius: 10px;
+  border: 2px solid #222;
+  display: none;
+}
+
+.key-binding-modal.open {
+  display: block;
 }
