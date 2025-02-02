@@ -36,7 +36,7 @@ h1 {
   max-width: 600px;
 }
 
-.item {
+.audio-keybinding-container {
   width: 250px;
   height: 60px;
   border: 1px solid #222;
@@ -50,7 +50,7 @@ h1 {
   font-weight: bold;
 }
 
-.item:hover {
+.audio-keybinding-container:hover {
   background: #4ffb80;
 }
 

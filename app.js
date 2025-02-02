@@ -1,15 +1,19 @@
 const app = (function () {
   function playSound(key) {
     const audio = document.querySelector(`audio[data-key="${key}"]`);
-    const item = document.querySelector(`.item[data-key="${key}"]`);
+    const keybindingContainer = document.querySelector(
+      `.audio-keybinding-container[data-key="${key}"]`
+    );
     if (!audio) return;
     audio.currentTime = 0;
     audio.play();
-    item.classList.add("playing");
+    keybindingContainer.classList.add("playing");
 
-    const items = document.querySelectorAll(".item");
-    items.forEach((item) =>
-      item.addEventListener("transitionend", removeTransition)
+    const keybindingContainers = document.querySelectorAll(
+      ".audio-keybinding-container"
+    );
+    keybindingContainers.forEach((container) =>
+      container.addEventListener("transitionend", removeTransition)
     );
   }
 
@@ -17,7 +21,6 @@ const app = (function () {
   const keyBoxes = document.querySelectorAll(".key-box");
   keyBoxes.forEach((keyBox) => {
     keyBox.addEventListener("contextmenu", function (e) {
-      console.log("contextmenu");
       const key = keyBox.textContent;
       const text = keyBox.nextElementSibling.textContent;
       e.preventDefault();
@@ -44,8 +47,8 @@ const app = (function () {
   }
 
   function getCurrentKeyBindings() {
-    return [...document.querySelectorAll(".item")].map(
-      (item) => item.dataset.key
+    return [...document.querySelectorAll(".audio-keybinding-container")].map(
+      (container) => container.dataset.key
     );
   }
 
@@ -69,14 +72,16 @@ const app = (function () {
       return;
     }
 
-    const boundItem = document.querySelector(`.item[data-key="${currentKey}"]`);
+    const keybindingContainer = document.querySelector(
+      `.audio-keybinding-container[data-key="${currentKey}"]`
+    );
 
     const audio = document.querySelector(`audio[data-key="${currentKey}"]`);
 
-    if (!boundItem || !audio) return;
+    if (!keybindingContainer || !audio) return;
 
-    boundItem.children[0].textContent = inputKey;
-    boundItem.dataset.key = inputKey;
+    keybindingContainer.children[0].textContent = inputKey;
+    keybindingContainer.dataset.key = inputKey;
     audio.dataset.key = inputKey;
     document.querySelector(".key-binding-modal-input").value = "";
     closeModal();
@@ -88,8 +93,8 @@ const app = (function () {
   }
 
   document.querySelector(".flex-grid").addEventListener("click", function (e) {
-    if (e.target.closest(".item")) {
-      const key = e.target.closest(".item").dataset.key;
+    if (e.target.closest(".audio-keybinding-container")) {
+      const key = e.target.closest(".audio-keybinding-container").dataset.key;
       playSound(key);
     }
   });
