@@ -1,8 +1,8 @@
-(function() {
+(function () {
   // code for allowing clicks
   const items = document.querySelectorAll(".item");
-  items.forEach(item =>
-    item.addEventListener("click", function(e) {
+  items.forEach((item) =>
+    item.addEventListener("click", function (e) {
       const key = item.dataset.key;
       const audio = document.querySelector(`audio[data-key="${key}"`);
       if (!audio) return;
@@ -21,21 +21,19 @@
   }
 
   function playSoundOnKeyPress(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"`);
-    const item = document.querySelector(`.item[data-key="${e.keyCode}"]`);
+    const key = e.key.toUpperCase();
+    const audio = document.querySelector(`audio[data-key="${key}"]`);
+    const item = document.querySelector(`.item[data-key="${key}"]`);
     if (!audio) return;
     audio.currentTime = 0;
     audio.play();
     item.classList.add("playing");
-  
+
     const items = document.querySelectorAll(".item");
-    items.forEach(item =>
+    items.forEach((item) =>
       item.addEventListener("transitionend", removeTransition)
     );
   }
-  
+
   window.addEventListener("keydown", playSoundOnKeyPress);
-
 })();
-
-
