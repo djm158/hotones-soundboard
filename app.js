@@ -43,6 +43,12 @@ const app = (function () {
     document.querySelector(".key-binding-modal").classList.remove("open");
   }
 
+  function getCurrentKeyBindings() {
+    return [...document.querySelectorAll(".item")].map(
+      (item) => item.dataset.key
+    );
+  }
+
   /*
    * Save the key binding for the selected item
    * Update the key box text and data-key attribute
@@ -56,9 +62,7 @@ const app = (function () {
       ".key-binding-modal-key"
     ).textContent;
 
-    const currentKeyBindings = [...document.querySelectorAll(".item")].map(
-      (item) => item.dataset.key
-    );
+    const currentKeyBindings = getCurrentKeyBindings();
 
     if (currentKeyBindings.includes(inputKey.toUpperCase())) {
       alert("You cannot bind the same key to the same sound");
