@@ -15,6 +15,7 @@
 
   <body>
     <h1 style="text-align: center">Hot Ones Sound Board</h1>
+    <!-- Key Binding Modal -->
     <div class="key-binding-modal">
       <h3 class="key-binding-modal-title">Configure Key Binding for:</h3>
 
@@ -25,8 +26,11 @@
       <input type="text" class="key-binding-modal-input" maxlength="1" />
       <button onclick="app.saveKeyBinding()">Save</button>
     </div>
+
+    <!-- Container for sound items -->
     <div class="container">
       <div class="flex-grid">
+        <!-- Sound items grouped by category -->
         <div class="col">
           <h2>Sean</h2>
           <div class="audio-keybinding-container" data-key="F">
@@ -97,6 +101,7 @@
       </div>
     </div>
 
+    <!-- Audio elements -->
     <audio data-key="F">
       <source src="sounds/sirachanobigdeal.ogg" type="audio/ogg" />
       <source src="sounds/sirachanobigdeal.mp3" type="audio/mp3" />
