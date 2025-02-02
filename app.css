@@ -87,3 +87,20 @@ h1 {
     margin: 2rem auto;
   }
 }
+
+.key-binding-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: #fdfdfd;
+  padding: 2rem;
+  border-radius: 10px;
+  border: 2px solid #222;
+  display: none;
+}
+
+.key-binding-modal.open {
+  display: block;
+}

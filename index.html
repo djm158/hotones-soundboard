@@ -15,7 +15,16 @@
 
   <body>
     <h1 style="text-align: center">Hot Ones Sound Board</h1>
+    <div class="key-binding-modal">
+      <h3 class="key-binding-modal-title">Configure Key Binding for:</h3>
 
+      <div>
+        <span>Current Key Binding:</span>
+        <span class="key-binding-modal-key"></span>
+      </div>
+      <input type="text" class="key-binding-modal-input" />
+      <button onclick="app.saveKeyBinding()">Save</button>
+    </div>
     <div class="container">
       <div class="flex-grid">
         <div class="col">
