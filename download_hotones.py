@@ -7,4 +7,4 @@ playlist = Playlist(playlist_url)
 
 for video in playlist.videos:
     ys = video.streams.get_audio_only()
-    ys.download()
+    ys.download(output_path="audio")
