@@ -1,28 +1,7 @@
 const app = (function () {
-  // code for allowing clicks
-  const items = document.querySelectorAll(".item");
-  items.forEach((item) =>
-    item.addEventListener("click", function (e) {
-      const key = item.dataset.key;
-      const audio = document.querySelector(`audio[data-key="${key}"`);
-      if (!audio) return;
-      audio.currentTime = 0;
-      audio.play();
-      item.classList.add("playing");
-
-      item.addEventListener("transitionend", removeTransition);
-    })
-  );
-
-  function removeTransition(e) {
-    if (e.propertyName !== "transform") return;
-
-    this.classList.remove("playing");
-  }
-
-  function playSoundOnKeyPress(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"`);
-    const item = document.querySelector(`.item[data-key="${e.keyCode}"]`);
+  function playSound(key) {
+    const audio = document.querySelector(`audio[data-key="${key}"]`);
+    const item = document.querySelector(`.item[data-key="${key}"]`);
     if (!audio) return;
     audio.currentTime = 0;
     audio.play();
@@ -33,8 +12,6 @@ const app = (function () {
       item.addEventListener("transitionend", removeTransition)
     );
   }
-
-  window.addEventListener("keydown", playSoundOnKeyPress);
 
   // handle right click on key box to open keybinding modal
   const keyBoxes = document.querySelectorAll(".key-box");
@@ -65,18 +42,58 @@ const app = (function () {
   function closeModal() {
     document.querySelector(".key-binding-modal").classList.remove("open");
   }
-  function saveKeyBinding() {
-    const key = document.querySelector(".key-binding-modal-input").value;
 
-    const keyCode = key.toUpperCase().charCodeAt(0);
-    console.log(keyCode);
-    const keybinding = document.querySelector(`[data-key="${keyCode}"]`);
-    console.log(keybinding);
-    if (!keybinding) return;
-    keybinding.children[0].textContent = key.toUpperCase();
+  /*
+   * Save the key binding for the selected item
+   * Update the key box text and data-key attribute
+   * Update the audio data-key attribute
+   * Clear the input
+   * Close the modal
+   */
+  function saveKeyBinding() {
+    const inputKey = document.querySelector(".key-binding-modal-input").value;
+    const currentKey = document.querySelector(
+      ".key-binding-modal-key"
+    ).textContent;
+
+    const currentKeyBindings = [...document.querySelectorAll(".item")].map(
+      (item) => item.dataset.key
+    );
+
+    if (currentKeyBindings.includes(inputKey.toUpperCase())) {
+      alert("You cannot bind the same key to the same sound");
+      return;
+    }
+
+    const boundItem = document.querySelector(`.item[data-key="${currentKey}"]`);
+
+    const audio = document.querySelector(`audio[data-key="${currentKey}"]`);
+
+    if (!boundItem || !audio) return;
+
+    boundItem.children[0].textContent = inputKey;
+    boundItem.dataset.key = inputKey;
+    audio.dataset.key = inputKey;
     document.querySelector(".key-binding-modal-input").value = "";
     closeModal();
   }
+
+  function removeTransition(e) {
+    if (e.propertyName !== "transform") return;
+    this.classList.remove("playing");
+  }
+
+  document.querySelector(".flex-grid").addEventListener("click", function (e) {
+    if (e.target.closest(".item")) {
+      const key = e.target.closest(".item").dataset.key;
+      playSound(key);
+    }
+  });
+
+  window.addEventListener("keydown", function (e) {
+    playSound(e.key.toUpperCase());
+  });
+
   return {
     saveKeyBinding,
     openModal,
